@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Arquivo Compactado</title>
+	<style>
+    #cross{
+        text-align: center;
+	width:30px;
+	height:30px;
+	margin: 0;
+	padding: 0;
+	border-collapse: collapse;
+	border: 1px solid white;    
+    }
+
+    #buttons{
+        width:30%;
+	float: right;
+    }
+
+    tr{
+	margin: 0;
+	padding: 0;
+	border-collapse: collapse;
+}
+    td{
+	height: 30px;
+	width: 30px;
+}
+    #leftBox{
+	float: left;
+}
+    #rightBox{
+	float: left;
+	clear:left;
+}
+
+.butt{
+	height:50px;
+	width: 107px;
+}
+#puzzel{
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+.inputBox{
+		width: 40px;
+		height:40px;
+		border: 1px solid black;
+		text-align: center;
+}
+#hintsTable{
+	width: 480px;
+	float: left;
+	clear: left;
+}
+    </style>
+</head>
+<body>
+	<div class="cruzadinhas">
+		<p>
+1) Qual o nome do principal componente, também considerado o cerebro do computador?<br><br>
+2) Faz parte do componente mencionado acima, tambem conhecida como a calculadora do computador<br><br>
+3) É a memória do componente dito no exercício um<br><br>
+4) Memória volátil fundamental para o desempenho do computador<br><br>
+5) Memória que guarda a BIOS<br><br>
+6) Pode ser zerada pela luz ultravioleta<br><br>
+7) Tipo de memoria presente em pen-drives, memorias de celular e consoles de video-games(playstation 2 e 3, xbox-360)<br><br>
+8) Tipo de memória que engloba HD, SSD, Pen-drive e aparelhos de armazenamento externo capaz de salvar os dados emitidos pelo computador(tipo o celular)<br><br>
+9) Funciona como uma ponte entre os periféricos e a memória, sendo o rio o processador<br><br>
+10) Realiza a interferência do processador aos periféricos<br><br>
+11) Responsavel pela interações entre os dispositivos, até mesmo entre os computadores<br><br>
+12) Locais determinado pelo processador, responsavel pela leitura, tanto do próprio quanto da DMA<br><br>
+13) Pela quantidade de nucleos, é capaz de realizar o turbo boost<br><br>
+14) Foi considerado o processador mais poderoso na época do seu lançamento<br><br>
+15) Foi pensada como um meio de acabar com o super aquecimento gerado pela alta frequência e evitar o processador de sobrecarrgar<br><br>
+16)	Pensada no desempenho maior do computador, como também ser cabível a novas tecnologias que viria mais a frente,<br> possuindo o dobro de nucleos no exercício anterior</p>
+	<br>
+	</div>
+</body>
+</html>
+<script>
+
+var currentTextInput;
+var puzzelArrayData;
+
+function initializeScreen(){
+	var puzzelTable = document.getElementById("puzzel");
+	puzzelArrayData = preparePuzzelArray();
+	for ( var i = 0; i < puzzelArrayData.length ; i++ ) {
+		var row = puzzelTable.insertRow(-1);
+		var rowData = puzzelArrayData[i];
+		for(var j = 0 ; j < rowData.length ; j++){
+			var cell = row.insertCell(-1);
+			if(rowData[j] != 0){
+				var txtID = String('txt' + '_' + i + '_' + j);
+				cell.innerHTML = '<input type="text" class="inputBox" maxlength="1" style="text-transform: lowercase" ' + 'id="' + txtID + '" onfocus="textInputFocus(' + "'" + txtID + "'"+ ')">';
+			}else{
+				cell.style.backgroundColor  = "black";
+			}
+		}
+	}
+	addHint();
+}
+
+function addHint(){
+	document.getElementById("txt_1_3").placeholder = "1";
+	document.getElementById("txt_13_0").placeholder = "2";
+	document.getElementById("txt_9_12").placeholder = "3";
+	document.getElementById("txt_7_0").placeholder = "4";
+	document.getElementById("txt_11_3").placeholder = "5";
+	document.getElementById("txt_2_1").placeholder = "6";
+	document.getElementById("txt_6_8").placeholder = "7";
+	document.getElementById("txt_0_5").placeholder = "8";
+	document.getElementById("txt_8_5").placeholder = "9";
+	document.getElementById("txt_13_4").placeholder = "10";
+	document.getElementById("txt_5_0").placeholder = "11";
+	document.getElementById("txt_7_7").placeholder = "12";
+	document.getElementById("txt_5_5").placeholder = "13";
+	document.getElementById("txt_9_9").placeholder = "14";
+	document.getElementById("txt_2_12").placeholder = "15";
+	document.getElementById("txt_15_3").placeholder = "16";
+}
+
+//Stores ID of the selected cell into currentTextInput
+function textInputFocus(txtID123){
+	currentTextInput = txtID123;
+}
+//Returns Array
+function preparePuzzelArray(){
+var items = [	[0, 0, 0, 0, 0, 'm', 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 'c', 0, 'e', 0, 0, 0, 0, 0, 0, 0],
+				[0, 'e', 'p', 'r', 'o', 'm', 0, 0, 0, 0, 0, 0, 'd'],
+				[0, 0, 0, 'u', 0, 'o', 0, 0, 0, 0, 0, 0, 'u'],
+				[0, 0, 0, 0, 0, 'r', 0, 0, 0, 0, 0, 0, 'a'],
+				['a', 0, 0, 0, 0, 'i', '5', 0, 0, 0, 0, 0, 'l'],
+				['d', 0, 0, 0, 0, 'a', 0, 0, 'f', 0, 0, 0, '-'],
+				['r','a', 'm', 0, 0, '-', 0, 'd', 'l', 0, 0, 0, 'c'],
+				['e', 0, 0, 0, 0, 'd', 'm', 'a', 'a', 0, 0, 0, 'o'],
+				['s', 'e', 'r', 'o', 'd', 'a', 'r', 't', 's', 'i', 'g', 'e', 'r'],
+				['s', 0, 0, 0, 0, '-', 0, 'a', 'h', '7', 0, 0, 'e'],
+                ['-', 0, 0, 'r', 'o', 'm', 0, '-', 0, 0, 0, 0, 0],
+                ['b', 0, 0, 0, 0, 'a', 0, 'b', 0, 0, 0, 0, 0],
+                ['u', 'l', 'a', 0, 'c', 's', 0, 'u', 0, 0, 0, 0, 0],
+                ['s', 0, 0, 0, 0, 's', 0, 's', 0, 0, 0, 0, 0],
+                [0, 0, 0, 'q', 'u', 'a', 'd', '-', 'c', 'o', 'r', 'e', 0]
+			];
+return items;
+}
+
+//Clear All Button
+function clearAllClicked(){
+	currentTextInput = '';
+	var puzzelTable = document.getElementById("puzzel");
+	puzzelTable.innerHTML = '';
+    initializeScreen();
+}
+//Check button
+function checkClicked(){
+	for ( var i = 0; i < puzzelArrayData.length ; i++ ) {
+		var rowData = puzzelArrayData[i];
+		for(var j = 0 ; j < rowData.length ; j++){
+			if(rowData[j] != 0){
+				var selectedInputTextElement = document.getElementById('txt' + '_' + i + '_' + j);
+				if(selectedInputTextElement.value != puzzelArrayData[i][j]){
+					selectedInputTextElement.style.backgroundColor = 'red';
+					
+				}else{
+					selectedInputTextElement.style.backgroundColor = 'white';
+				}
+			}
+		}
+	}
+}
+//Clue Button
+function clueClicked(){
+	if (currentTextInput != null){
+		var temp1 = currentTextInput;
+		var token = temp1.split("_");
+		var row = token[1];
+		var column = token[2];
+		document.getElementById(temp1).value = puzzelArrayData[row][column];
+		//checkClicked();
+	}
+}
+//Solve Button
+function solveClicked(){
+	if (currentTextInput != null){
+		var temp1 = currentTextInput;
+		var token = temp1.split("_");
+		var row = token[1];
+		var column = token[2];
+		
+		// Print elements on top
+		for(j = row; j >= 0; j--){
+			if(puzzelArrayData[j][column] != 0){
+				document.getElementById('txt' + '_' + j + '_' + column).value = puzzelArrayData[j][column];
+				}else break;
+		}
+		// Print elements on right
+		for(i = column; i< puzzelArrayData[row].length; i++){
+			if(puzzelArrayData[row][i] != 0){
+				document.getElementById('txt' + '_' + row + '_' + i).value = puzzelArrayData[row][i];
+				}else break;
+		}
+		
+		// Print elements below
+		for(m = row; m< puzzelArrayData.length; m++){
+			if(puzzelArrayData[m][column] != 0){
+				document.getElementById('txt' + '_' + m + '_' + column).value = puzzelArrayData[m][column];
+				}else break;
+		}
+		// Print elements on left
+		for(k = column; k >= 0; k--){
+			if(puzzelArrayData[row][k] != 0){
+				document.getElementById('txt' + '_' + row + '_' + k).value = puzzelArrayData[row][k];
+				}else break;
+		}
+		// Done!
+		
+	}
+}
+</script>
+</head>
+<body onload="initializeScreen()">
+<div id="leftBox">
+<table id="puzzel">
+
+</table>
+</div>
+<div id="rightBox">
+<table>
+	<tr><td><input class="butt"  type="submit" value="Clear All" onclick="clearAllClicked()"></td>
+	<td><input class="butt"  type="submit" value="Check" onclick="checkClicked()"></td>
+	<td><input class="butt"  type="submit" value="Solve" onclick="solveClicked()"></td>
+	<td><input class="butt"  type="submit" value="Clue" onclick="clueClicked()"></td></tr>
+</table>
+</div>
+
+</script>
